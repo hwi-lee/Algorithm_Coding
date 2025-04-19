@@ -6,6 +6,7 @@ public class Main {
 
 	static int N, cnt;
 	static TriNode root;
+	static StringBuffer sb = new StringBuffer();
 
 	static class TriNode {
 		TriNode[] children;
@@ -43,16 +44,15 @@ public class Main {
 			int idx = str.charAt(i) - 'a';
 
 			if (cur.children[idx] == null) {
-				System.out.print(str.charAt(i));
+				sb.append(str.charAt(i));
 				return false;
 			}
-
-			System.out.print(str.charAt(i));
+			sb.append(str.charAt(i));
 			count++;
 			cur = cur.children[idx];
 		}
 		if (count == str.length() && cur.isNumber == true) {
-			System.out.print(cur.cnt + 1);
+			sb.append(Integer.toString(cur.cnt + 1));
 			cur.cnt++;
 			return true;
 		} else
@@ -71,7 +71,8 @@ public class Main {
 			String s = br.readLine();
 			find(s);
 			Insert(s);
-			System.out.println();
+			System.out.println(sb);
+			sb.setLength(0);
 		}
 
 	}
