@@ -6,7 +6,7 @@ public class Main {
 
 	static int N, cnt;
 	static TriNode root;
-	static StringBuffer sb = new StringBuffer();
+	static StringBuilder sb = new StringBuilder();
 
 	static class TriNode {
 		TriNode[] children;
@@ -71,7 +71,7 @@ public class Main {
 			String s = br.readLine();
 			find(s);
 			Insert(s);
-			System.out.println(sb);
+			System.out.println(sb.toString());
 			sb.setLength(0);
 		}
 
