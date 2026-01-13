@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Array;
-import java.util.ArrayDeque;
+import java.util.PriorityQueue;
 import java.util.ArrayList;
 import java.util.Queue;
 import java.util.StringTokenizer;
@@ -33,7 +33,7 @@ public class Main {
     }
 
     static void dijkstra(int index, int node){
-        Queue<Node> q=new ArrayDeque<>();
+        PriorityQueue<Node> q = new PriorityQueue<>();
 
         dist[index][node-1]=0;
         q.add(new Node(node, 0));
@@ -42,6 +42,7 @@ public class Main {
             int curnode=p.v;
             int curdist=p.w;
 
+            if (curdist > dist[index][curnode-1]) continue;
             for(int i=0;i<graph[curnode-1].size();i++){
                 int nextnode=graph[curnode-1].get(i)[0];
                 int nextdist=graph[curnode-1].get(i)[1];
