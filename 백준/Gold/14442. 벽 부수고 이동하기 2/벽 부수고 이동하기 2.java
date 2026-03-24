@@ -36,15 +36,15 @@ public class Main {
                     if (nr < 0 || nr >= N || nc < 0 || nc >= M)
                         continue;
 
-                    if (!visited[nr][nc][k]) {
-                        if (map[nr][nc]) { //벽 부술 수 있음
-                            if (k < K) { //아직 횟수 남음 -> 벽 부수고 가는 경우
-                                visited[nr][nc][k] = true;
-                                q.offer(new int[]{nr, nc, k + 1});
-                            }
-                        } else { //벽 없는 위치
-                            q.offer(new int[]{nr, nc, k});
+                    if (map[nr][nc]) { // 벽
+                        if (k < K && !visited[nr][nc][k + 1]) {
+                            visited[nr][nc][k + 1] = true;
+                            q.offer(new int[]{nr, nc, k + 1});
+                        }
+                    } else { // 빈칸
+                        if (!visited[nr][nc][k]) {
                             visited[nr][nc][k] = true;
+                            q.offer(new int[]{nr, nc, k});
                         }
                     }
 
@@ -73,7 +73,7 @@ public class Main {
         }
 
 
-        int ans=bfs();
+        int ans = bfs();
         System.out.println(ans);
 
     }
