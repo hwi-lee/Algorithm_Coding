@@ -15,7 +15,8 @@ public class Main {
     static int bfs() {
         Queue<int[]> q = new ArrayDeque<>();
         q.offer(new int[]{0, 0, 0});
-
+        visited[0][0][0] = true;
+        
         while (!q.isEmpty()) {
             int size = q.size();
             cnt++;
